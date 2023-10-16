@@ -1,0 +1,27 @@
+<h2>Lista de proveedores</h2>
+<div>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre de empresa</th>
+                <th>Nombre de contacto</th>
+                <th>Dirección</th>
+                <th>Telefono</th>
+                <th>E-mail</th>
+                <th>Calificacion</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            <tr *ngFor="let supplier of suppliers">
+                <td>{{supplier.supplierId}}</td>
+                <td>{{supplier.companyName}}</td>
+                <td>{{supplier.contact}}</td>
+                <td>{{supplier.address}}</td>
+                <td>{{supplier.email}}</td>
+                <td>{{supplier.score}}</td>
+                <td>{{supplier.city}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -39,16 +39,16 @@ public class Product {
 	
     @ManyToOne
     @JoinColumn(name = "activityid")
-	int activityid;
+	private SelectionActivity activityid;
 	
     @ManyToOne
     @JoinColumn(name = "selectioncriteriaid")
-	int selectioncriteriaid;
+	private SelectionCriteria selectioncriteriaid;
 
 	@OneToMany(mappedBy = "productid")
-	private List<Contract> contract;
+	private List<Contract> product;
 	
-	@OneToMany(mappedBy = "Product")
+	@OneToMany(mappedBy = "productid")
 	private List<SupplierProductv1> idSupplierProduct;
     
 }

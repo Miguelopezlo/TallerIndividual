@@ -1,10 +1,13 @@
 package com.sb.suppliermanagement.model;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,13 +21,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Embeddable
 @Table(name="supplierproductv1", schema="APP_M_PROV_SELECC")
-public class SupplierProductv1 {
+public class SupplierProductv1 implements Serializable{
     @Id
+	@ManyToOne
 	@JoinColumn(name = "supplierid")
-    private Long supplierid;
-    
+    private Supplier supplierid;
     @Id
+    @ManyToOne
     @JoinColumn(name = "productid")
-    private Long productid;
+    private Product productid;
 
 }

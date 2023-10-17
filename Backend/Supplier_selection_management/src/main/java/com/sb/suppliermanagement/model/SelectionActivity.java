@@ -33,6 +33,6 @@ public class SelectionActivity {
 	
     @ManyToOne
     @JoinColumn(name = "responsibleareaid")
-	int responsibleareaid;
+	private ResponsibleArea responsibleareaid;
 	
 }

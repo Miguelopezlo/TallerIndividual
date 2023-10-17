@@ -48,7 +48,7 @@ public class Supplier {
 	String city;
 	
 	
-	@OneToMany(mappedBy = "supplierproductid")
+	@OneToMany(mappedBy = "supplierid")
 	private List<SupplierProductv1> supplier;
 	
 	@OneToMany(mappedBy = "supplierid")

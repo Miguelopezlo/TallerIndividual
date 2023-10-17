@@ -47,10 +47,10 @@ public class Contract {
 	
     @ManyToOne
     @JoinColumn(name = "productid")
-	int productid;
+	private Product productid;
     
     @ManyToOne
     @JoinColumn(name = "supplierid")
-	int supplierid;
+	private Supplier supplierid;
 
 }

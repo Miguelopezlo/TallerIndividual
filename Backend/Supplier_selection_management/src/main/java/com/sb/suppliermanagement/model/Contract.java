@@ -1,10 +1,15 @@
 package com.sb.suppliermanagement.model;
 
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -12,6 +17,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
+
 
 @Entity
 @Getter @Setter
@@ -25,5 +33,24 @@ public class Contract {
 	@Column(name="contractid")
 	int contractid;
 	
+	@Column(name="contractdescription")
+	String contractdescription;
+	
+	@Column(name="startdate")
+	Date startdate;
+	
+	@Column(name="finishdate")
+	Date finishdate;
+	
+	@Column(name="contractstate")
+	Date contractstate;
+	
+    @ManyToOne
+    @JoinColumn(name = "productid")
+	int productid;
+    
+    @ManyToOne
+    @JoinColumn(name = "supplierid")
+	int supplierid;
 
 }

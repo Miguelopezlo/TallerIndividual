@@ -17,8 +17,8 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="USER", schema="APP_M_PROV_SELECC")
-public class User {
+@Table(name="USERs", schema="APP_M_PROV_SELECC")
+public class Users {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_secuence")

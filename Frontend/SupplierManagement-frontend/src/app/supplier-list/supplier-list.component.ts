@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Supplier } from '../supplier';
+import { SupplierService } from '../supplier.service';
 
 @Component({
   selector: 'app-supplier-list',
@@ -9,34 +10,16 @@ import { Supplier } from '../supplier';
 export class SupplierListComponent implements OnInit{
   suppliers: Supplier[];
 
-  constructor(){}
+  constructor(private supplierService:SupplierService){}
 
   ngOnInit(): void{
+    this.getSuppliers()
 
-    this.suppliers = [
-      {
-      "supplierId":1,
-      "companyName":"ColFachadas",
-      "contact":"Miguel Lopez",
-      "address": "Cra 49H #56g-21",
-      "celphone":"3196529849",
-      "email":"colfachadas@gmail.com",
-      "score":7.7,
-      "city":"Cali"
-
-    },
-    {
-      "supplierId":2,
-      "companyName":"ColFachadas2",
-      "contact":"Miguel Lopez Lopez",
-      "address": "Cra 49H #56g-22",
-      "celphone":"3196529850",
-      "email":"colfachadas@hotmail.com",
-      "score":9,
-      "city":"Cali"
-
-    }
-  ];
+  }
+  private getSuppliers(){
+    this.supplierService.getSupplierList().subscribe(dato =>{
+      this.suppliers = dato
+    })
   }
 
 }

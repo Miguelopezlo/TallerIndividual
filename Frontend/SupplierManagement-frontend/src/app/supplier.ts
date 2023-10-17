@@ -1,11 +1,10 @@
 export class Supplier {
-    supplierId: number;
-    companyName: string;
+    supplierid: number;
+    companyname: string;
     contact: string;
     address: string;
     celphone: string;
     email: string;
     score: number;
     city: string;
-
 }

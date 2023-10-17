@@ -1,5 +1,4 @@
 <h2>Lista de proveedores</h2>
-<div>
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -14,8 +13,8 @@
         </thead>
         <tbody class="table-light">
             <tr *ngFor="let supplier of suppliers">
-                <td>{{supplier.supplierId}}</td>
-                <td>{{supplier.companyName}}</td>
+                <td>{{supplier.supplierid}}</td>
+                <td>{{supplier.companyname}}</td>
                 <td>{{supplier.contact}}</td>
                 <td>{{supplier.address}}</td>
                 <td>{{supplier.email}}</td>
@@ -24,4 +23,3 @@
             </tr>
         </tbody>
     </table>
-</div>

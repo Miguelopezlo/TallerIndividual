@@ -9,7 +9,7 @@ import { Supplier } from './supplier';
 export class SupplierService {
   
   //Esta URL retorna el listado de todos los proveedores
-  private baseURL = "http://localhost:8080/api/v1/Supplier"
+  private baseURL = "http://localhost:8080/api/v1/Supplier/all"
 
   constructor(private httpClient: HttpClient) { }
 

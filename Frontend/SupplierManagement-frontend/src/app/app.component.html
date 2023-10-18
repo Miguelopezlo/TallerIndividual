@@ -1,4 +1,21 @@
-<h1 class="text-center">Sistema de gestión de proveedores</h1>
+<div style= "float: left">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-ul">
+    <li class="navbar-item">
+      <a routerLink="suppliers">Buscar proveedor</a>
+    </li>
+    <li class="navbar-item">
+      <a>Buscar productor</a>
+    </li>
+    <li class="navbar-item">
+      <a>Buscar contrato</a>
+    </li>
+  </ul>
+</nav>
+</div>
+
+
+<h1 class="text-center">{{title}}</h1>
 <div class="container">
-  <app-supplier-list></app-supplier-list>
+  <router-outlet></router-outlet>
 </div>

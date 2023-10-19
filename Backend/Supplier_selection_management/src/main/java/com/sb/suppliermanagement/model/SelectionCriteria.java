@@ -27,7 +27,7 @@ public class SelectionCriteria {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "selectioncriteria_secuence")
 	@SequenceGenerator(name = "selectioncriteria_secuence", sequenceName = "selectioncriteria_secuence", allocationSize = 1)
 	@Column(name="selectioncriteriaid")
-	int selectioncriteriaid;
+	Long selectioncriteriaid;
 	
 	@Column(name="selectioncriterianame")
 	String selectioncriterianame;

@@ -10,5 +10,5 @@ public interface SupplierService {
 	public Optional<Supplier> findById(Long id);
 	public Supplier save(Supplier supplier);
 	public void deleteById(Long id);
-
+	
 }

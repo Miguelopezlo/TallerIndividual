@@ -27,7 +27,7 @@ public class ResponsibleArea {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "responsiblearea_secuence")
 	@SequenceGenerator(name = "responsiblearea_secuence", sequenceName = "responsiblearea_secuence", allocationSize = 1)
 	@Column(name="responsibleareaid")
-	int responsibleareaid;
+	Long responsibleareaid;
 	
 	@Column(name="responsibleareaname")
 	String responsibleareaname;

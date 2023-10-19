@@ -31,7 +31,7 @@ public class Contract {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contracts_secuence")
 	@SequenceGenerator(name = "contracts_secuence", sequenceName = "contracts_secuence", allocationSize = 1)
 	@Column(name="contractid")
-	int contractid;
+	Long contractid;
 	
 	@Column(name="contractdescription")
 	String contractdescription;

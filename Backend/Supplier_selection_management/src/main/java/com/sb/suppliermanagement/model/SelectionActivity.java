@@ -26,7 +26,7 @@ public class SelectionActivity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "selectionactivity_secuence")
 	@SequenceGenerator(name = "selectionactivity_secuence", sequenceName = "selectionactivity_secuence", allocationSize = 1)
 	@Column(name="activityid")
-	int activityid;
+	Long activityid;
 	
 	@Column(name="activityname")
 	String activityname;

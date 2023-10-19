@@ -27,7 +27,7 @@ public class Supplier {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "supplier_secuence")
 	@SequenceGenerator(name = "supplier_secuence", sequenceName = "supplier_secuence", allocationSize = 1)
 	@Column(name="supplierid")
-	int supplierid;
+	Long supplierid;
 	
 	@Column(name="companyname")
 	String companyname;

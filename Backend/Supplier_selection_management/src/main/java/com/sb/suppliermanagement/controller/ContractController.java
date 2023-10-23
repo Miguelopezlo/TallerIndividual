@@ -1,11 +1,13 @@
 package com.sb.suppliermanagement.controller;
-import java.util.List;
 
+import java.util.Optional;
 import com.sb.suppliermanagement.model.Contract;
-import com.sb.suppliermanagement.repository.ContractRepository;
+import com.sb.suppliermanagement.services.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,10 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContractController {
 	
 	@Autowired
-	private ContractRepository repositorio;
-	@GetMapping("/Product")
-	public List<Contract> listProducts(){
-		return repositorio.findAll();
+	private ContractService service;
+	
+	@GetMapping("/Contract/{id}")
+	public ResponseEntity<?> getContractById(@PathVariable Long id){
+		Optional<Contract> o = service.findById(id);
+		if (o.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+				
+			return ResponseEntity.ok().body(o.get());
+		
 	}
-
+	
 }

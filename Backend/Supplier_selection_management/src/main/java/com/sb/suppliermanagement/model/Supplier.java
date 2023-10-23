@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,15 +44,16 @@ public class Supplier {
 	String email;
 	
 	@Column(name="score")
-	String score;
+	int score;
 	
 	@Column(name="city")
 	String city;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "supplierid")
-	private List<SupplierProductv1> supplier;
+	private List<SupplierProductv1> supplierproduct;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "supplierid")
 	private List<Contract> contract;
 

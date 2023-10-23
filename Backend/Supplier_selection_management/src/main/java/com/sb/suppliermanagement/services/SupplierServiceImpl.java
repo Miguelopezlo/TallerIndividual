@@ -26,6 +26,18 @@ public class SupplierServiceImpl implements SupplierService {
 	public Optional<Supplier> findById(Long id) {
 		return repositorio.findById(id);
 	}
+	
+	@Transactional(readOnly=true)
+	public List<Supplier> findByCity(String city) {
+		return (List<Supplier>) repositorio.findByCity(city);
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Supplier> findByScore(int score) {
+		return (List<Supplier>) repositorio.findByScore(score);
+	}
+
+
 
 
 	@Transactional

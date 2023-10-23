@@ -3,9 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sb.suppliermanagement.model.Supplier;
-import com.sb.suppliermanagement.repository.SupplierRepository;
 import com.sb.suppliermanagement.services.SupplierService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +26,11 @@ public class SupplierController {
 	private SupplierService service;
 	
 	
-	private SupplierRepository repositorio;
-	
 	@GetMapping("/Supplier/all")
 	public ResponseEntity<?> listSupplier(){
 		return ResponseEntity.ok().body(service.findAll());
 	}
-	@GetMapping("/Supplier/{id}")
+	@GetMapping("/Supplier/id/{id}")
 	public ResponseEntity<?> listSupplierById(@PathVariable Long id){
 		Optional<Supplier> o = service.findById(id);
 		if (o.isEmpty()) {
@@ -42,6 +38,27 @@ public class SupplierController {
 		}
 			
 		return ResponseEntity.ok().body(o.get());
+	}
+	
+	
+	@GetMapping("/Supplier/city/{city}")
+	public ResponseEntity<?> listSupplierByCity(@PathVariable String city){
+		List<Supplier> o = service.findByCity(city);
+		if (o.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+			
+		return ResponseEntity.ok(o);
+	}
+	
+	@GetMapping("/Supplier/score/{score}")
+	public ResponseEntity<?> listSupplierByScore(@PathVariable int score){
+		List<Supplier> o = service.findByScore(score);
+		if (o.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+			
+		return ResponseEntity.ok(o);
 	}
 	
 	@PostMapping("/Supplier")

@@ -1,6 +1,8 @@
 package com.sb.suppliermanagement.model;
 
 
+import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +30,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="contract", schema="APP_M_PROV_SELECC")
-public class Contract {
+public class Contract implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2814708347276000292L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contracts_secuence")
 	@SequenceGenerator(name = "contracts_secuence", sequenceName = "contracts_secuence", allocationSize = 1)
@@ -37,18 +46,20 @@ public class Contract {
 	String contractdescription;
 	
 	@Column(name="startdate")
-	Date startdate;
+	LocalTime startdate;
 	
 	@Column(name="finishdate")
-	Date finishdate;
+	LocalTime finishdate;
 	
 	@Column(name="contractstate")
-	Date contractstate;
+	String contractstate;
 	
+	@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "productid")
 	private Product productid;
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "supplierid")
 	private Supplier supplierid;

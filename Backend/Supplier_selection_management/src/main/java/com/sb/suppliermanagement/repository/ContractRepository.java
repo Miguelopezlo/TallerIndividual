@@ -6,4 +6,5 @@ import com.sb.suppliermanagement.model.Contract;
 
 public interface ContractRepository extends JpaRepository<Contract, Long> {
 
+
 }

@@ -11,7 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SupplierProductId implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
 	private Supplier supplierid;
 	private Product productid;
 	

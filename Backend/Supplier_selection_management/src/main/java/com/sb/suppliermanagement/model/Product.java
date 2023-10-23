@@ -1,10 +1,11 @@
 package com.sb.suppliermanagement.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,13 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @Table(name="product", schema="APP_M_PROV_SELECC")
-public class Product{
+public class Product implements Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 91834862309904618L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_secuence")
@@ -39,27 +45,20 @@ public class Product{
 	String productname;
 	
 	@Column(name="averageprice")
-	Number averageprice;
+	int averageprice;
 	
-	@JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JoinColumn(name = "activityid")
 	private SelectionActivity activityid;
-	
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+
+
+    @ManyToOne
     @JoinColumn(name = "selectioncriteriaid")
 	private SelectionCriteria selectioncriteriaid;
 
     @JsonIgnore
-	@OneToMany(mappedBy = "productid")
+	@OneToMany(mappedBy = "productid", cascade=CascadeType.PERSIST)
 	private List<Contract> product;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "productid")
-	private List<SupplierProductv1> productsupplier;
-
-	
-	
-    
 }

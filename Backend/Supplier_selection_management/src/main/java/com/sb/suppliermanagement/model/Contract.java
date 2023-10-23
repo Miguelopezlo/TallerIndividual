@@ -2,9 +2,7 @@ package com.sb.suppliermanagement.model;
 
 
 import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,20 +41,19 @@ public class Contract implements Serializable{
 	String contractdescription;
 	
 	@Column(name="startdate")
-	LocalTime startdate;
+	LocalDate startdate;
 	
 	@Column(name="finishdate")
-	LocalTime finishdate;
+	LocalDate finishdate;
 	
 	@Column(name="contractstate")
 	String contractstate;
 	
-	@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "productid")
 	private Product productid;
     
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "supplierid")
 	private Supplier supplierid;

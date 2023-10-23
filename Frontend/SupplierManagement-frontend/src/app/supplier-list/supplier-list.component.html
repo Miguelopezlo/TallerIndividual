@@ -4,7 +4,7 @@
             <tr>
                 <th>Nombre de empresa</th>
                 <th>Nombre de contacto</th>
-                <th>Dirección</th>
+                <!-- <th>Dirección</th> -->
                 <th>Telefono</th>
                 <th>E-mail</th>
                 <th>Calificacion</th>
@@ -13,10 +13,10 @@
         </thead>
         <tbody class="table-light">
             <tr *ngFor="let supplier of suppliers">
-                <td>{{supplier.supplierid}}</td>
                 <td>{{supplier.companyname}}</td>
                 <td>{{supplier.contact}}</td>
-                <td>{{supplier.address}}</td>
+                <!-- <td>{{supplier.address}}</td> -->
+                <td>{{supplier.celphone}}</td>
                 <td>{{supplier.email}}</td>
                 <td>{{supplier.score}}</td>
                 <td>{{supplier.city}}</td>

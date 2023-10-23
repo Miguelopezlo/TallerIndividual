@@ -1,19 +1,21 @@
 package com.sb.suppliermanagement.model;
 
+
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+
+
+@Embeddable
 public class SupplierProductId implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	@Column(name = "supplierid")
 	private Supplier supplierid;
+	
+	@Column(name = "productid")
 	private Product productid;
 	
 

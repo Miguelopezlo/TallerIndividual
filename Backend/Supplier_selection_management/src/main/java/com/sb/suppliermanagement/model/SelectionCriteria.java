@@ -26,6 +26,7 @@ import lombok.Setter;
 public class SelectionCriteria {
 	
 	@Id
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "selectioncriteria_secuence")
 	@SequenceGenerator(name = "selectioncriteria_secuence", sequenceName = "selectioncriteria_secuence", allocationSize = 1)
 	@Column(name="selectioncriteriaid")
@@ -34,6 +35,7 @@ public class SelectionCriteria {
 	@Column(name="selectioncriterianame")
 	String selectioncriterianame;
 	
+	@JsonIgnore
 	@Column(name="selectioncriteriadescription")
 	String selectioncriteriadescription;
 	

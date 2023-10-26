@@ -27,38 +27,38 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @Table(name="product", schema="APP_M_PROV_SELECC")
-public class Product implements Serializable{
-
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 91834862309904618L;
+public class Product{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_secuence")
 	@SequenceGenerator(name = "product_secuence", sequenceName = "product_secuence", allocationSize = 1)
 	@Column(name="productid")
-	Long productid;
+	private Long productid;
 	
 	@Column(name="productname")
-	String productname;
+	private String productname;
 	
 	@Column(name="averageprice")
-	int averageprice;
+	private int averageprice;
 	
 
     @ManyToOne
     @JoinColumn(name = "activityid")
 	private SelectionActivity activityid;
 
-
+    
     @ManyToOne
     @JoinColumn(name = "selectioncriteriaid")
 	private SelectionCriteria selectioncriteriaid;
 
+    
+    
     @JsonIgnore
 	@OneToMany(mappedBy = "productid", cascade=CascadeType.PERSIST)
 	private List<Contract> product;
-	
+    
+	@JsonIgnore
+	@OneToMany(mappedBy = "productid", cascade=CascadeType.PERSIST)
+	private List<SupplierProductv1> productserv;
+		
 }

@@ -24,20 +24,19 @@ public class ProductController {
 	
 	@GetMapping("/Product/all")
 	public ResponseEntity<?> listProduct(){
-		System.out.println("Ejecutando Lista de productos");
 		return ResponseEntity.ok().body(service.findAll());
 	}
 	
 
-//	@GetMapping("/Prodcut/criteria/{criteria}")
-//	public ResponseEntity<?> listProductByselectioncriteriaid(@PathVariable Long criteria){
-//		List<Product> o = service.findByselectioncriteriaid(criteria);
-//		if (o.isEmpty()) {
-//			return ResponseEntity.notFound().build();
-//		}
-//			
-//		return ResponseEntity.ok(o);
-//	}
+	@GetMapping("/Prodcut/criteria/{criteria}")
+	public ResponseEntity<?> listProductByselectioncriteriaid(@PathVariable Long criteria){
+		List<Product> o = service.findByselectioncriteriaid(criteria);
+		if (o.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+			
+		return ResponseEntity.ok(o);
+	}
 	
 	
 	@GetMapping("/Prodcut/criteria/{name}")

@@ -22,10 +22,10 @@ public class ProductServiceImpl implements ProductService {
 		return repositorio.findAll();
 	}
 
-//	@Transactional(readOnly=true)
-//	public List<Product> findByselectioncriteriaid(Long criteria) {
-//		return (List<Product>) repositorio.findByselectioncriteriaid(criteria);
-//	}
+	@Transactional(readOnly=true)
+	public List<Product> findByselectioncriteriaid(Long criteria) {
+		return (List<Product>) repositorio.findByselectioncriteriaid(criteria);
+	}
 
 	@Transactional(readOnly=true)
 	public List<Product> findByProductname(String name) {

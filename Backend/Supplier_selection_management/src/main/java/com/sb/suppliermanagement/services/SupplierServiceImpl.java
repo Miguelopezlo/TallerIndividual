@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sb.suppliermanagement.model.Supplier;
+import com.sb.suppliermanagement.model.SupplierProductv1;
 import com.sb.suppliermanagement.repository.SupplierRepository;
 
 @Service
@@ -37,6 +38,11 @@ public class SupplierServiceImpl implements SupplierService {
 		return (List<Supplier>) repositorio.findByScore(score);
 	}
 
+	
+//	@Transactional(readOnly=true)
+//	public List<Supplier> findByProductid(Long productid) {
+//		return (List<Supplier>) repositorio.findIdByProductid(productid);
+//	}
 
 
 
@@ -49,6 +55,14 @@ public class SupplierServiceImpl implements SupplierService {
 	public void deleteById(Long id) {
 		repositorio.deleteById(id);
 
+	}
+
+
+	@Transactional(readOnly=true)
+	public List<Supplier> getSupplierByProductid(Long productid) {
+		System.out.println("Se están buscando los proveedores para este producto"+ productid);
+		return repositorio.getSupplierByProductid(productid);
+		
 	}
 
 }

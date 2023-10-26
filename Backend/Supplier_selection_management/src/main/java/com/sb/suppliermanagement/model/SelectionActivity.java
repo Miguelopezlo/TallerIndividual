@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +28,7 @@ import lombok.Setter;
 public class SelectionActivity {
 	
 	@Id
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "selectionactivity_secuence")
 	@SequenceGenerator(name = "selectionactivity_secuence", sequenceName = "selectionactivity_secuence", allocationSize = 1)
 	@Column(name="activityid")
@@ -35,8 +37,8 @@ public class SelectionActivity {
 	@Column(name="activityname")
 	String activityname;
 	
-
-    @ManyToOne
+	@JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "responsibleareaid")
 	private ResponsibleArea responsibleareaid;
     

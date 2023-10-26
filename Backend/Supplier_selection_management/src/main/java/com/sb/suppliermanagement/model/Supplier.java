@@ -33,6 +33,7 @@ public class Supplier implements Serializable{
 	private static final long serialVersionUID = -3334125259893004669L;
 
 	@Id
+    @JsonIgnore
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "supplier_secuence")
 	@SequenceGenerator(name = "supplier_secuence", sequenceName = "supplier_secuence", allocationSize = 1)
 	@Column(name="supplierid")
@@ -43,6 +44,9 @@ public class Supplier implements Serializable{
 	
 	@Column(name="contact")
 	String contact;
+	
+	@Column(name="address")
+	String address;
 	
 	@Column(name="celphone")
 	String celphone;
@@ -56,12 +60,16 @@ public class Supplier implements Serializable{
 	@Column(name="city")
 	String city;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "supplier", cascade=CascadeType.PERSIST)
-	private List<SupplierProductv1> supplier;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "supplier", cascade=CascadeType.PERSIST)
+//	private List<SupplierProductv1> supplier;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "supplierid", cascade=CascadeType.PERSIST)
 	private List<Contract> contract;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "supplierid", cascade=CascadeType.PERSIST)
+	private List<SupplierProductv1> supplierprod;
 
 }

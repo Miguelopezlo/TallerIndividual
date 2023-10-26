@@ -26,6 +26,7 @@ import lombok.Setter;
 public class ResponsibleArea {
 	
 	@Id
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "responsiblearea_secuence")
 	@SequenceGenerator(name = "responsiblearea_secuence", sequenceName = "responsiblearea_secuence", allocationSize = 1)
 	@Column(name="responsibleareaid")

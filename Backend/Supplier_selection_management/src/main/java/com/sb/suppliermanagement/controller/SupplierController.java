@@ -61,6 +61,17 @@ public class SupplierController {
 		return ResponseEntity.ok(o);
 	}
 	
+	@GetMapping("/Supplier/Productid/{productid}")
+	public ResponseEntity<?> listSupplierByProductid(@PathVariable Long productid){
+		List<Supplier> o = service.getSupplierByProductid(productid);
+		if (o.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+			
+		return ResponseEntity.ok(o);
+	}
+	
+	
 	@PostMapping("/Supplier")
 	public ResponseEntity<?> createSupplier(@RequestBody Supplier supplier){
 		Supplier supplierdb = service.save(supplier);

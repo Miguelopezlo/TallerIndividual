@@ -72,13 +72,13 @@ public class SupplierController {
 	}
 	
 	
-	@PostMapping("/Supplier")
+	@PostMapping("/Supplier/create")
 	public ResponseEntity<?> createSupplier(@RequestBody Supplier supplier){
 		Supplier supplierdb = service.save(supplier);
 		return ResponseEntity.status(HttpStatus.CREATED).body(supplierdb);
 	}
 	
-	@PutMapping("/Supplier/{id}")
+	@PutMapping("/Supplier/update/{id}")
 	public ResponseEntity<?> updateScoreSupplier(@RequestBody Supplier supplier, @PathVariable Long id){
 		Optional<Supplier> o = service.findById(id);
 		if (o.isEmpty()) {
@@ -91,7 +91,7 @@ public class SupplierController {
 		
 	}
 	
-	@DeleteMapping("Supplier/{id}")
+	@DeleteMapping("Supplier/delete/{id}")
 	public ResponseEntity<?> deleteSupplier(@PathVariable Long id){
 		service.deleteById(id);
 		return ResponseEntity.noContent().build();

@@ -2,7 +2,6 @@ package com.sb.suppliermanagement.model;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -60,9 +57,6 @@ public class Supplier implements Serializable{
 	@Column(name="city")
 	String city;
 	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "supplier", cascade=CascadeType.PERSIST)
-//	private List<SupplierProductv1> supplier;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "supplierid", cascade=CascadeType.PERSIST)

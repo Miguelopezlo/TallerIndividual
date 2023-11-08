@@ -1,6 +1,7 @@
 package com.sb.suppliermanagement.controller;
 import java.util.List;
 
+import com.sb.suppliermanagement.dto.ProductDTO;
 import com.sb.suppliermanagement.model.Product;
 import com.sb.suppliermanagement.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,14 @@ public class ProductController {
 	
 	
 	@GetMapping("/Product/all")
-	public ResponseEntity<?> listProduct(){
-		return ResponseEntity.ok().body(service.findAll());
+	public ResponseEntity<?> listProductDTO(){
+		return ResponseEntity.ok().body(service.findAllasDTO());
 	}
 	
 
 	@GetMapping("/Prodcut/criteria/{criteria}")
-	public ResponseEntity<?> listProductByselectioncriteriaid(@PathVariable Long criteria){
-		List<Product> o = service.findByselectioncriteriaid(criteria);
+	public ResponseEntity<?> listProductByselectioncriteriaidDTO(@PathVariable Long criteria){
+		List<ProductDTO> o = service.findBySelectioncriteriaidAsDTO(criteria);
 		if (o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
@@ -39,18 +40,18 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/Prodcut/criteria/{name}")
-	public ResponseEntity<?> listProductByProductname(@PathVariable String name){
-		List<Product> o = service.findByProductname(name);
+	@GetMapping("/Product/productid/{productid}")
+	public ResponseEntity<?> listProductByProductidDTO(@PathVariable Long productid){
+		List<ProductDTO> o = service.findByProductidAsDTO(productid);
 		if (o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-			
+			 
 		return ResponseEntity.ok(o);
 	}
-	
-	
-	@PostMapping("/Product")
+//	
+//	
+	@PostMapping("/Product/create")
 	public ResponseEntity<?> createSupplier(@RequestBody Product product){
 		Product productdb = service.save(product);
 		return ResponseEntity.status(HttpStatus.CREATED).body(productdb);

@@ -1,6 +1,8 @@
 package com.sb.suppliermanagement.controller;
 
 import java.util.Optional;
+
+import com.sb.suppliermanagement.dto.ContractDTO;
 import com.sb.suppliermanagement.model.Contract;
 import com.sb.suppliermanagement.services.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,19 @@ public class ContractController {
 	@Autowired
 	private ContractService service;
 	
+//	@GetMapping("/Contract/{id}")
+//	public ResponseEntity<?> getContractById(@PathVariable Long id){
+//		Optional<Contract> o = service.findById(id);
+//		if (o.isEmpty()) {
+//			return ResponseEntity.notFound().build();
+//		}
+//				
+//			return ResponseEntity.ok().body(o.get());
+//		
+//	}
 	@GetMapping("/Contract/{id}")
-	public ResponseEntity<?> getContractById(@PathVariable Long id){
-		Optional<Contract> o = service.findById(id);
+	public ResponseEntity<?> getContractByIdDTO(@PathVariable Long id){
+		Optional<ContractDTO> o = service.findByContractid(id);
 		if (o.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

@@ -2,6 +2,7 @@ package com.sb.suppliermanagement.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.sb.suppliermanagement.dto.SupplierProcessingDTO;
 import com.sb.suppliermanagement.model.Supplier;
 import com.sb.suppliermanagement.services.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -28,7 +31,7 @@ public class SupplierController {
 	
 	@GetMapping("/Supplier/all")
 	public ResponseEntity<?> listSupplier(){
-		return ResponseEntity.ok().body(service.findAll());
+		return ResponseEntity.ok().body(service.findAllasDTO());
 	}
 	@GetMapping("/Supplier/id/{id}")
 	public ResponseEntity<?> listSupplierById(@PathVariable Long id){
@@ -97,6 +100,15 @@ public class SupplierController {
 		return ResponseEntity.noContent().build();
 		
 	}
+
+	
+    @PostMapping("Supplier/create/many")
+    public ResponseEntity<Object> createSuppliers(@RequestParam("suppliers") MultipartFile file) {
+        System.out.println("HTTP REQUEST: create list of suppliers from MultiPart file " + file.getOriginalFilename());
+        SupplierProcessingDTO processInfo = service.createSuppliers(file);
+        System.out.println("HTTP RESPONSE: number of new suppliers that were saved in data base");
+        return new ResponseEntity<>(processInfo, HttpStatus.OK);
+    }
 
 
 }

@@ -2,11 +2,10 @@ package com.sb.suppliermanagement.services;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.repository.query.Param;
-
+import org.springframework.web.multipart.MultipartFile;
+import com.sb.suppliermanagement.dto.SupplierDTO;
+import com.sb.suppliermanagement.dto.SupplierProcessingDTO;
 import com.sb.suppliermanagement.model.Supplier;
-import com.sb.suppliermanagement.model.SupplierProductv1;
 
 public interface SupplierService {
 	public List<Supplier> findAll();
@@ -16,5 +15,8 @@ public interface SupplierService {
 	public Supplier save(Supplier supplier);
 	public void deleteById(Long id);
 	public List<Supplier> getSupplierByProductid( Long productid);
+	public  SupplierProcessingDTO createSuppliers(MultipartFile file);
+	
+	public List<SupplierDTO> findAllasDTO();
 	
 }

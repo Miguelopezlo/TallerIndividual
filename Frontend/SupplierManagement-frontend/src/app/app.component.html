@@ -1,21 +1,18 @@
-<div style= "float: left">
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-ul">
-    <li class="navbar-item">
-      <a routerLink="suppliers">Buscar proveedor</a>
-    </li>
-    <li class="navbar-item">
-      <a>Buscar productor</a>
-    </li>
-    <li class="navbar-item">
-      <a>Buscar contrato</a>
-    </li>
-  </ul>
-</nav>
-</div>
-
-
-<h1 class="text-center">{{title}}</h1>
+<app-header></app-header>
 <div class="container">
-
+  <div class="side-bar">
+    <app-menu></app-menu>
+  </div>
+  <div class="content">
+    <h1 class="text-center">{{title}}</h1>
+    <div class="search-bar">
+      <app-search-bar></app-search-bar>
+    </div>
+    <p-toast></p-toast>
+    <p-fileUpload #form name="myfile[]" mode="basic" chooseLabel="Choose" [customUpload]="true"  [maxFileSize]="10000000" (uploadHandler)="myUploader($event,form)"
+></p-fileUpload>
+    <div class="table">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

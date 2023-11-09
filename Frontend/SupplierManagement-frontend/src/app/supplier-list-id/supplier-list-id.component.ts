@@ -4,29 +4,27 @@ import { SupplierService } from '../supplier/supplier.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-supplier-list',
-  templateUrl: './supplier-list.component.html',
-  styleUrls: ['./supplier-list.component.css'],
+  selector: 'app-supplier-list-id',
+  templateUrl: './supplier-list-id.component.html',
+  styleUrls: ['./supplier-list-id.component.css'],
   providers: [MessageService]
 })
 
-export class SupplierListComponent implements OnInit{
+export class SupplierListIdComponent implements OnInit{
   suppliers!: Supplier[];
 
   clonedSuppliers: { [s: number]: Supplier } = {};
 
-  columnHeadSupplier: string[]= ['Nombre de empresa','Nombre de contacto','Dirección','Telefono','E-mail','Calificacion','Ciudad','Acciones'];
+  columnHeadSupplier: string[]= ['Id proveedor','Nombre de empresa','Nombre de contacto','Dirección','Telefono','E-mail','Calificacion','Ciudad','Acciones'];
 
   constructor(private supplierService:SupplierService, private messageService: MessageService){}
 
   ngOnInit(){
-    this.getSuppliers()
+    
   }
   
   private getSuppliers(){
-    this.supplierService.getSupplierList().subscribe(dato =>{
-      this.suppliers = dato;
-    })
+
   }
 
   onRowEditInit(supplier: Supplier) {
@@ -48,5 +46,4 @@ export class SupplierListComponent implements OnInit{
       this.suppliers[index] = this.clonedSuppliers[supplier.supplierid as number];
       delete this.clonedSuppliers[supplier.supplierid as number];
   }
-    
 }

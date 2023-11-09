@@ -5,24 +5,21 @@
     styleClass="p-datatable-gridlines"
     editMode="row"
     dataKey="supplierid"
-    [paginator]="true"
-    [scrollable]="true"
-    [rows]="5"
-    [showCurrentPageReport]="true"
     [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10, 25, 50]"
 >
     <ng-template pTemplate="caption"> Lista de proveedores </ng-template>
     <ng-template pTemplate="header" let-column>
         <tr>
-            <th style="min-width: 200px" pResizableColumn *ngFor="let col of column">
+            <th style="width: 10%" *ngFor="let col of column">
                 {{col}}
             </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-supplier let-editing="editing" let-ri="rowIndex">
         <tr [pEditableRow]="supplier">
+            <td>
+                {{supplier.supplierid}}
+            </td>
             <td>
                 <p-cellEditor>
                     <ng-template pTemplate="input">

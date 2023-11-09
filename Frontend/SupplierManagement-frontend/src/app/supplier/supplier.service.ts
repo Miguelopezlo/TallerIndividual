@@ -19,5 +19,4 @@ export class SupplierService {
     return this.httpClient.get<Supplier[]>(`${this.baseURL}`)
   }
   
-
 }

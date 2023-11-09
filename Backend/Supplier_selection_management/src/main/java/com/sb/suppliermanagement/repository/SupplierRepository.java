@@ -25,6 +25,6 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long> {
 	
 	List<Supplier> getSupplierByProductid(@Param("productid") Long productid);
 	
-	boolean existsSupplierBySupplierid(Long supplierid);
+	boolean existsBySupplierid(Long supplierid);
 
 }

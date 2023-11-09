@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,11 +84,12 @@ public class SupplierServiceImpl implements SupplierService {
             while ((row = reader.readLine()) != null && !row.isEmpty()) {
                 // Splits row string into different values
                 String[] supplierData = row.split(",");
+                System.out.println("Fila "+Arrays.toString(supplierData));
                 // Manually mapping into a Client instance
                 Supplier newSupplier = new Supplier();
-                newSupplier.setSupplierid(Long.parseLong(supplierData[0].strip()));
+                newSupplier.setSupplierid(Long.parseLong(supplierData[0]));
                 // Checks if supplierId exists in db or if it is repeated in this csv file (does that by seeing if supplierid exists in validId list)
-                if (repositorio.existsSupplierBySupplierid(newSupplier.getSupplierid()) || validSupplierid.contains(newSupplier.getSupplierid())) {
+                if (repositorio.existsBySupplierid(newSupplier.getSupplierid()) || validSupplierid.contains(newSupplier.getSupplierid())==true) {
                     // If client document is already in database or processed in this csv file
                 	invalidSupplierid.add(newSupplier.getSupplierid());
                 }

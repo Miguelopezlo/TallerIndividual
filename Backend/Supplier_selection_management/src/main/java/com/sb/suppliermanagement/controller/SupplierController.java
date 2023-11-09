@@ -109,6 +109,6 @@ public class SupplierController {
         System.out.println("HTTP RESPONSE: number of new suppliers that were saved in data base");
         return new ResponseEntity<>(processInfo, HttpStatus.OK);
     }
-
+    
 
 }

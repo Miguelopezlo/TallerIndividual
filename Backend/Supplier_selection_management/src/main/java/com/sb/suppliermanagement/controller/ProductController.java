@@ -19,41 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/")
 @CrossOrigin
 public class ProductController {
-	@Autowired
-	private ProductService service;
-	
-	
-	@GetMapping("/Product/all")
-	public ResponseEntity<?> listProductDTO(){
-		return ResponseEntity.ok().body(service.findAllasDTO());
-	}
-	
+    @Autowired
+    private ProductService service;
 
-	@GetMapping("/Prodcut/criteria/{criteria}")
-	public ResponseEntity<?> listProductByselectioncriteriaidDTO(@PathVariable Long criteria){
-		List<ProductDTO> o = service.findBySelectioncriteriaidAsDTO(criteria);
-		if (o.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
-			
-		return ResponseEntity.ok(o);
-	}
-	
-	
-	@GetMapping("/Product/productid/{productid}")
-	public ResponseEntity<?> listProductByProductidDTO(@PathVariable Long productid){
-		List<ProductDTO> o = service.findByProductidAsDTO(productid);
-		if (o.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
-			 
-		return ResponseEntity.ok(o);
-	}
-//	
-//	
-	@PostMapping("/Product/create")
-	public ResponseEntity<?> createSupplier(@RequestBody Product product){
-		Product productdb = service.save(product);
-		return ResponseEntity.status(HttpStatus.CREATED).body(productdb);
-	}
+    // Obtiene todos los productos como objetos DTO
+    @GetMapping("/all")
+    public ResponseEntity<?> listProductDTO() {
+        return ResponseEntity.ok().body(service.findAllasDTO());
+    }
+
+    // Obtiene productos por criterio de selección como objetos DTO
+    @GetMapping("/criteria/{criteria}")
+    public ResponseEntity<?> listProductByselectioncriteriaidDTO(@PathVariable Long criteria) {
+        List<ProductDTO> o = service.findBySelectioncriteriaidAsDTO(criteria);
+        if (o.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(o);
+    }
+
+    // Obtiene productos por ID de producto como objetos DTO
+    @GetMapping("/productid/{productid}")
+    public ResponseEntity<?> listProductByProductidDTO(@PathVariable Long productid) {
+        List<ProductDTO> o = service.findByProductidAsDTO(productid);
+        if (o.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(o);
+    }
+
+    // Crea un nuevo producto
+    @PostMapping("/create")
+    public ResponseEntity<?> createProduct(@RequestBody Product product) {
+        Product productdb = service.save(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productdb);
+    }
 }

@@ -7,32 +7,23 @@ import com.sb.suppliermanagement.services.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/contract")
 @CrossOrigin
 public class ContractController {
 	
 	@Autowired
 	private ContractService service;
 	
-// Este metodo se deja comentado debido a que se usó la implementación del modelo entidad, posteriormente se hizo el cambio al DTO
-//	@GetMapping("/Contract/{id}")
-//	public ResponseEntity<?> getContractById(@PathVariable Long id){
-//		Optional<Contract> o = service.findById(id);
-//		if (o.isEmpty()) {
-//			return ResponseEntity.notFound().build();
-//		}
-//				
-//			return ResponseEntity.ok().body(o.get());
-//		
-//	}
 	
 	// Implementación del metodo get para el modelo entidad
+	@GetMapping("/{id}")
 	public ResponseEntity<?> getContractByIdDTO(@PathVariable Long id) {
 	    // Llama al método findByContractid del servicio para buscar el contrato por su ID.
 	    Optional<ContractDTO> o = service.findByContractid(id);

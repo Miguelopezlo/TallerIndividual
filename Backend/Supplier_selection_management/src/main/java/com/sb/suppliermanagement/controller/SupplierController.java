@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/v1/Supplier")
+@RequestMapping("/api/v1/supplier")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SupplierController {
 
